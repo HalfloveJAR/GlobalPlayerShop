@@ -2,12 +2,15 @@ package net.halflove.globalPlayerShop
 
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
 import net.halflove.globalPlayerShop.commands.MarketCommand
+import net.halflove.globalPlayerShop.signs.SignShopListener
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
 
     override fun onEnable() {
         registerCommands()
+        registerEvents()
     }
 
     override fun onDisable() {
@@ -22,5 +25,9 @@ class Main : JavaPlugin() {
                 listOf("playershops")
             );
         }
+    }
+
+    private fun registerEvents() {
+        Bukkit.getPluginManager().registerEvents(SignShopListener(), this)
     }
 }
